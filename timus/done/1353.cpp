@@ -16,7 +16,7 @@ long long func(int S,int p)
     if(S/10==0)
         V[S][p]=1;
     else
-        V[S][p]=1;
+        V[S][p]=0;
     return V[S][p];
 
     }
