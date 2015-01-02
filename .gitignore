@@ -1,4 +1,18 @@
-# Compiled Object files
-*.o
-# Executables
-*.exe
+*
+!.cpp
+!.c
+!.java
+!.py
+!.txt
+!.in
+!.h
+!**/
+!**/*.cpp
+!**/*.c
+!**/*.java
+!**/*.py
+!**/*.txt
+!**/*.in
+!**/*.h
+!Makefile
+
