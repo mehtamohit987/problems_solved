@@ -40,15 +40,15 @@ int val(int N)
 
 int iter(int N)
 {
-    map < int, int  > P;
-    map < int , int  > :: iterator i;
-
-    P[0]=1;
-    P[1]=K-1;
+    int a,b,temp;
+    a=1;
+    b=K-1;
     for(int i=2;i<=N;i++)
-    P[i] = (K-1)*P[i-1] + (K-1)*P[i-2];
-
-    return P[N];
+    {   temp=b;
+        b = (K-1)*b + (K-1)*a;
+        a=temp;
+    }
+    return b;
 }
 
 int main()
