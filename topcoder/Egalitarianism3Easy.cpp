@@ -29,19 +29,19 @@ public:
 	{
 		queue<pair<int,int> > Q;
 		int i;
-
+		
 		Q.push(make_pair(v,0));
 
 		levNum[0]++;
-
+		
 		pair<int,int> u;
-
+		
 		while(!Q.empty())
 		{
 			u=Q.front();Q.pop();
-
+			
 			for(i=0;i<n;i++)
-			{
+			{	
 				if(G[u.first][i])
 				{
 					Q.push(make_pair(i,u.second+G[u.first][i]));
@@ -49,7 +49,7 @@ public:
 				}
 			}
 		}
-
+	
 	}
 	int maxCities(int, vector <int>, vector <int>, vector <int>);
 };
@@ -57,33 +57,32 @@ public:
 
 int Egalitarianism3Easy::maxCities(int N, vector <int> a, vector <int> b, vector <int> len) {
 
-	n=N;
+	n=N;	
 	int i,j;
 	G=vector<vector<int> >(n,vector<int> (n,0));
 	int sum=0;
-
+	
 	for (i = 0; i < a.size(); ++i)
 	{
 		/* code */
-		G[a[i]-1][b[i]-1]=len[i];
-		//G[b[i]-1][a[i]-1]=len[i];
-		sum+=len[i];
+		G[a[i]-1][b[i]-1]=len[i];sum+=len[i];
 	}
-
-	levNum=	vector<int>(sum,0);
+	
+	levNum=	vector<int>(n,sum);
 	bfs(0);
 	int max=0,nu=0;
-	for(i=0;i<n;i++)
+	for(i=0;i<n;i++)	
 	{
 		if(max<=levNum[i])
 		{	max=levNum[i]; nu=i; }
 	}
-
+	
 	if(max==1&&nu!=0) max=2;
-
+	
 	return max;
-
+	
 }
+
 
 double test0() {
 	int p0 = 4;
@@ -226,29 +225,31 @@ double test4() {
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
+
+//Powered by [KawigiEdit] 2.0!

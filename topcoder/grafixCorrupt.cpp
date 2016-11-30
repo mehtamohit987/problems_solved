@@ -25,26 +25,32 @@ public:
 };
 
 int grafixCorrupt::selectWord(vector <string> dictionary, string candidate) {
+	
+	int ind,n=dictionary.size(),m=candidate.length(),i,j,flag,c;
+	c=0;ind=-1;
+	for(i=0;i<n;i++)
+	{
+		flag=0;
+		for(j=0;j<m;j++)
+		{
+			
+			if(candidate[j]==dictionary[i][j])
+			{
+				flag++;
+			}
 
-    int res=0,temp,indx=-1;
-    for(int i=0;i<dictionary.size();i++)
-    {
-        temp=0;
-        for(int j=0;j<candidate.length();j++)
-            if(candidate[j]==dictionary[i][j])
-            temp++;
-
-        if(res<temp)
-        {
-            res=temp;
-            indx=i;
-        }
-    }
-
-    return indx;
-
+		}
+		if(flag>c)
+		{
+				c=flag;
+				ind=i;
+		}
+	}
+	
+	return ind;
 }
-//<%:start-tests%>
+
+
 double test0() {
 	string t0[] = {"cat", "cab", "lab"};
 	vector <string> p0(t0, t0+sizeof(t0)/sizeof(string));
@@ -173,33 +179,35 @@ double test4() {
 		return (double)(end-start)/CLOCKS_PER_SEC;
 	}
 }
-//<%:end-tests%>
+
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
+
+//Powered by [KawigiEdit] 2.0!

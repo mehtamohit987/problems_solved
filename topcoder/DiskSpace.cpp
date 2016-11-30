@@ -25,7 +25,7 @@ public:
 };
 
 int DiskSpace::minDrives(vector <int> used, vector <int> total) {
-	int sum=0,i,flag=0;
+		int sum=0,i,flag=0;
 	vector<int>:: iterator I;
 	for(i=0;i<used.size();i++)
 	sum+=used[i];
@@ -37,7 +37,6 @@ int DiskSpace::minDrives(vector <int> used, vector <int> total) {
 		flag++;
 	}
 	return flag;
-
 }
 
 
@@ -172,27 +171,27 @@ double test4() {
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else

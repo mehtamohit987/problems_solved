@@ -29,65 +29,51 @@ public:
 };
 bool Marketing::dfs(int v, int c)
 {
-        //cout<<"\n\nin dfs :"<<v<<"\n"<<c<<"\n";
 		colour[v]=c;
-
+		
 		for(int i=0;i<n;i++)
 		{
 			if(G[v][i])
 			{
-                //cout<<"\n\nadjacent node :"<<i<<"\n\n";
 				if(colour[i]!=-1&&colour[i]==c)
 					return false;
 				else if(colour[i]==-1 && !dfs(i,1-c))
 						return false;
 			}
 		}
-
+	
 	return true;
-
+	
 }
 long long Marketing::howMany(vector <string> compete)
 {
 	int i,v,r=0;
 	n=compete.size();
-	//cout<<"\n\nsize :"<<n<<"\n\n";
 	G=vector<vector<bool> > (n,vector<bool>(n,false));
 	colour=vector<int> (n,-1);
 	for(i=0;i<n;i++)
 	{
 		istringstream s(compete[i]);
 		while(s>>v)
-			G[i][v]=G[v][i]=true;
+			G[i][v]=G[v][i]=true;		
 	}
-
-    //cout<<"\n\ngraph :"<<n<<"\n\n";
-
-    //cout<<"\n\nresult :"<<n<<"\n\n";
+	
 	for(i=0;i<n;i++)
 	{
 		if(colour[i]==-1)
-		{   //cout<<"\n\n starting traverse for vertex :"<<i<<"\n\n";
+		{
 			if(dfs(i,0))
 			r++;
 			else
 			return -1;
 		}
-		//cout<<"\n\nres :"<<r<<"\n\n";
 	}
-	/*for(i=0;i<n;i++)
-	{
-
-       cout<<colour[i];
-    }
-*/
+	
+	
 	return (1LL<<r);
 }
 
-//<%:testing-code%>
-//Powered by [KawigiEdit] 2.0!
 
-//<%:start-tests%>
 double test0() {
 	string t0[] = {"1 4","2","3","0",""};
 	vector <string> p0(t0, t0+sizeof(t0)/sizeof(string));
@@ -205,33 +191,35 @@ double test4() {
 		return (double)(end-start)/CLOCKS_PER_SEC;
 	}
 }
-//<%:end-tests%>
+
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
+
+//Powered by [KawigiEdit] 2.0!

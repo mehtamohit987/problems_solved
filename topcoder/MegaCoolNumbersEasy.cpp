@@ -29,18 +29,20 @@ int MegaCoolNumbersEasy::count(int N) {
 	vector<int> M;
 	for(int i=1;i<100;i++)
 	M.push_back(i);
-
+	
 	for(int i=1;i<=9;i++)
 	for(int j=0;j<=9;j++)
 	for(int k=0;k<=9;k++)
 	if(k-j==j-i) M.push_back(100*i+10*j+k);
-
+	
 	for(int i=0;i<M.size();i++)
 	if(M[i]<=N)
 	res++;
-
+	
 return res;
 }
+
+
 double test0() {
 	int p0 = 1;
 	MegaCoolNumbersEasy * obj = new MegaCoolNumbersEasy();
@@ -111,21 +113,23 @@ double test2() {
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
+
+//Powered by [KawigiEdit] 2.0!

@@ -24,7 +24,7 @@ public:
 	string year1(string S)
 	{
 	int i,n=S.length();
-
+	
 	if(n>=0&&S[0]=='x')
 	S[0]='z';
 	for(i=1;i<n;i++)
@@ -36,15 +36,14 @@ public:
 			S[i+1]='z';
 		}
 		}
-
+		
 		else if(S[i]=='x')
 		{
 			S[i]='k';
 			S.insert(S.begin()+(i+1),'s');
 		}
-
+		
 	}
-	cout<<S;
 	return S;
 	}
 	string year2(string S)
@@ -57,13 +56,12 @@ public:
 		if(S[i]=='y')
 		{
 			S[i]='i';
-
+			
 		}
 	}
-	cout<<S;
 	return S;
 	}
-
+	
 	string year3(string S)
 	{
 	S=year2(S);
@@ -78,10 +76,9 @@ public:
 			}
 		}
 	}
-	cout<<S;
 	return S;
 	}
-
+	
 	string year4(string S)
 	{
 	S=year3(S);
@@ -93,24 +90,23 @@ public:
 			j=i+1;
 			while(j!=n&&S[j]=='c')
 			j++;
-
+		
 			if(j!=n&&S[j]=='k')
 			{
 			S.erase(S.begin()+i,S.begin()+j);
 			}
 		}
 	}
-	cout<<S;
 	return S;
 	}
-
+	
 	string year5(string S)
 	{
 
 	S=year4(S);
 	int i,n=S.length();
 
-
+	
 	if(n>=3&&S[0]=='s'&&S[1]=='c'&&S[2]=='h')
 	{
 		S[0]='s';S[1]='k';
@@ -122,7 +118,7 @@ public:
 	{
 		if(S[i]==' ')
 		{
-
+			
 			if((i+3)<n&&S[i+1]=='s'&&S[i+2]=='c'&&S[i+3]=='h')
 			{
 				S[i+1]='s';S[i+2]='k';
@@ -130,7 +126,7 @@ public:
 			}
 
 		}
-
+		
 		else if(S[i]=='c')
 		{
 			if((i+1)!=n&&S[i+1]=='h')
@@ -139,12 +135,12 @@ public:
 				{
 					S[i]='k';
 					S.erase(S.begin()+(i+1));
-
+					
 				}
 			}
 		}
 	}
-
+	
 	for(i=0;i<n;i++)
 	{
 		if(S[i]=='c')
@@ -155,19 +151,18 @@ public:
 			}
 		}
 	}
-
-cout<<S;
+	
 	return S;
-
+	
 	}
-
+	
 	string year6(string S)
 	{
 	S=year5(S);
 
 	int i,n=S.length();
 
-
+	
 	if(n>=2&&S[0]=='k'&&S[1]=='n')
 	{
 		S[0]='n';
@@ -179,7 +174,7 @@ cout<<S;
 	{
 		if(S[i]==' ')
 		{
-
+			
 			if((i+2)<n&&S[i+1]=='k'&&S[i+2]=='n')
 			{
 				S[i+1]='n';
@@ -187,27 +182,32 @@ cout<<S;
 			}
 
 		}
-
+		
 	}
-cout<<S;
+		
 	return S;
 	}
+	
+	
+	
+	
+	string year7(string S)
+	{
+	S=year6(S);
 
-
-
-
-string year7(string S)
-{
 	int i,n=S.length();
+
+
 
 	for(i=0;i<n;)
 	{
-		if(S[i]!='a'&&S[i]!='e'&&S[i]!='i'&&S[i]!='o'&&S[i]!='u')
+		if(S[i]!='a'||S[i]!='e'||S[i]!='i'||S[i]!='o'||S[i]!='u')
 		{
-			if((i+1)<n && (S[i+1]==S[i]))
+			if((i+1)<n&&S[i+1]==S[i])
 			{
-
-				S.erase(S.begin()+(i+1)); //segmentation fault here. cant know the cause
+			
+				S.erase(S.begin()+(i+1));
+				
 			}
 			else
 			{i++;}
@@ -215,32 +215,42 @@ string year7(string S)
 		else
 		{i++;}
 	}
-    cout<<S;
+		
 	return S;
 	}
-
-
+	
+	
+	
+	
+	
+	
 	string getNewSpelling(int, string);
-
+	
+	
+	
+	
+	
+	
 };
 
 string Twain::getNewSpelling(int year, string phrase) {
 string S=phrase;
 	switch(year)
 	{
-
+	
 		case 0:{ return S;break;}
 		case 1:{ return year1(S);break;}
 		case 2:{ return year2(S);break;}
 		case 3:{ return year3(S);break;}
 		case 4:{ return year4(S);break;}
 		case 5:{ return year5(S);break;}
-		case 6:{ return year6(S);break;}
+		case 6:{ return year6(S);break;}					
 		case 7:{ return year7(S);break;}
 		default: return year7(S);
 	}
-
+	
 }
+
 
 double test0() {
 	int p0 = 1;
@@ -407,38 +417,39 @@ double test6() {
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test5();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test6();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
 
+//Powered by [KawigiEdit] 2.0!

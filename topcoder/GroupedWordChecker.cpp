@@ -27,48 +27,35 @@ public:
 };
 
 int GroupedWordChecker::howMany(vector <string> words) {
-
+	
 int ans=0;
-
+	
 	for(int i=0;i<words.size();i++)
 	{
-
-		vector<bool> vis(50,false);
 		bool flag=false;
-
-		for(int j=0;j<words[i].length();j++)
+		vector<bool> M(26,false);
+		char prev=words[i][0];
+		M[words[i][0]-97]=true;
+		for(int j=1;j<words[i].length();j++)
 		{
-			vis[j]=true;
-			string S;
-			int cnt=0;
-			for(int k=i+1;k<=words[i].length();k++)
-			{
-				if(!vis[k]&&words[i][k]==words[i][j])
-				{
-					if(cnt>0&&words[i].substr(j+1,k-1)!=S)
-					{
-						flag=true; break;
-					}
-					else if(cnt==0)
-					S=words[i].substr(j+1,k-1);
-
-					vis[j]=true;
-					cnt++;
-				}
-
-
+			if(words[i][j]!=prev)
+			{	
+				if(!M[words[i][j]-97])
+				{M[words[i][j]-97]=true;prev=words[i][j];}
+				else
+				{flag=true;break;}
 			}
-
-			if(flag)
-			break;
 		}
+		
 
 		if(!flag) ans++;
-
+	
 	}
-
-return ans;
+	
+	return ans;
 }
+
+
 double test0() {
 	string t0[] = {"ccazzzzbb", "code", "aabbbccb", "topcoder"};
 	vector <string> p0(t0, t0+sizeof(t0)/sizeof(string));
@@ -188,29 +175,31 @@ double test4() {
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
+
+//Powered by [KawigiEdit] 2.0!

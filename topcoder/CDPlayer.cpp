@@ -26,9 +26,10 @@ public:
 
 int CDPlayer::isRandom(vector <string> songlist, int n) {
 
+
 	string S="";
 	S=accumulate(songlist.begin(), songlist.end(), S);
-    cout<<"\n"<<S<<"\n";
+    //cout<<"\n"<<S<<"\n";
 
 	int i,thresh=0;
 	bool flag;
@@ -90,20 +91,10 @@ int CDPlayer::isRandom(vector <string> songlist, int n) {
     //cout<<"\n\nres threes "<<thresh;
     return thresh;
 
-}
-int main()
-{
-    CDPlayer C;
-    vector<string> songlist;
-    songlist.push_back("AAACBACBACBACBACBACBACB");
-    //songlist.push_back("BCA");
-
-    C.isRandom(songlist,3);
-
 
 }
-/*
-//<%:start-tests%>
+
+
 double test0() {
 	string t0[] = {"BBAC"};
 	vector <string> p0(t0, t0+sizeof(t0)/sizeof(string));
@@ -283,7 +274,7 @@ double test6() {
 		return (double)(end-start)/CLOCKS_PER_SEC;
 	}
 }
-//<%:end-tests%>
+
 int main() {
 	int time;
 	bool errors = false;
@@ -322,6 +313,4 @@ int main() {
 		cout <<"Some of the test cases had errors." <<endl;
 }
 
-//<%:testing-code%>
 //Powered by [KawigiEdit] 2.0!
-*/

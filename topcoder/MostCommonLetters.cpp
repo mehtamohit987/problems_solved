@@ -25,31 +25,31 @@ public:
 };
 
 string MostCommonLetters::listMostCommon(vector <string> text) {
-    string S;
-	accumulate(text.begin(),text.end(),S);
+		
+	string S="";
+	S=accumulate(text.begin(),text.end(),S);
 	string C;
 	int n=S.length();
 	vector<int> A(26,0);
 	for(int i=0;i<n;i++)
-	if(S[i]!=' ')A[S[i]-97]++;
+    if(S[i]!=' ')A[tolower(S[i])-97]++;
+
 	vector<int>::iterator it;
 
 	it=max_element(A.begin(),A.end());
 
     int a=*it;
-    cout<<"a = "<<a<<"\n\n";
 	if(a!=0)
 	{
 
 		for(it=A.begin();it!=A.end();it++)
 		if(*it==a)C.push_back((int)(it-A.begin())+97);
 
-		return C;
 	}
-	return "";
-
+	return C;
 
 }
+
 
 double test0() {
 	string t0[] = {"abc a"};
@@ -186,29 +186,31 @@ double test4() {
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
+
+//Powered by [KawigiEdit] 2.0!

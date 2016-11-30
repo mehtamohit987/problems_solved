@@ -61,7 +61,7 @@ vector <int> grafixGlobs::execute(vector <string> commands, int sel) {
 			}
 			else if(temp.compare("polygon"))
 			{
-
+			
 				for(j=0;j<V.size();j++)
 				{
 					if(V[j].compare(""))
@@ -76,7 +76,7 @@ vector <int> grafixGlobs::execute(vector <string> commands, int sel) {
 			s>>x1>>x2;
 			V[x1]+=V[x2];
 			V[x2]="";
-
+			
 		}
 		else if(temp.compare("split"))
 		{
@@ -91,15 +91,15 @@ vector <int> grafixGlobs::execute(vector <string> commands, int sel) {
 					if(V[k].compare(""))
 					V[k]=temp[i++];
 				}
-			}
-
-			if(i<temp.length())
+			}		
+			
+			if(i<temp.length())	
 			{
 				buff[0]=temp[j];
 				for(j=i;j<temp.length();i++)
-				V.push_back(string());
+				V.push_back(string());		
 			}
-
+	
 		}
 		if(sel<V.size())
 		{
@@ -112,21 +112,19 @@ vector <int> grafixGlobs::execute(vector <string> commands, int sel) {
 				c++;
 				else if(V[sel][i]=='p')
 				p++;
-
+				
 			}
 			A.push_back(a);
 			A.push_back(c);
 			A.push_back(p);
 		}
-	cout<<"here";
+	cout<<"here";		
 		return A;
-	}
+	}	
 }
 
 
-//<%:testing-code%>
-//Powered by [KawigiEdit] 2.0!
-//<%:start-tests%>
+
 double test0() {
 	string t0[] = {"make polygon", "make circle", "make polygon", "merge 0 1", "merge 2 0", "split 2"};
 	vector <string> p0(t0, t0+sizeof(t0)/sizeof(string));
@@ -336,34 +334,35 @@ double test4() {
 		return (double)(end-start)/CLOCKS_PER_SEC;
 	}
 }
-//<%:end-tests%>
+
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
 
+//Powered by [KawigiEdit] 2.0!

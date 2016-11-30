@@ -23,7 +23,6 @@ using namespace std;
 class NegativeGraphDiv2 {
 public:
     int n,e;
-    vector<vector<bool> > C;
     vector<vector<int> > G;
     vector<int> dist;
     vector<bool> S;
@@ -67,7 +66,7 @@ long long NegativeGraphDiv2::dijkstra(int src)
 
 
        for (int v = 0; v < n; v++)
-         if (!S[v] && G[u][v]!=INT_MAX && dist[u] != INT_MAX && dist[u]+G[u][v] < dist[v])
+         if (!S[v] && G[u][v]!=0 && dist[u] != INT_MAX && dist[u]+G[u][v] < dist[v])
             dist[v] = dist[u] + G[u][v];
         S[u] = true;
      }
@@ -79,10 +78,8 @@ long long NegativeGraphDiv2::dijkstra(int src)
 long long NegativeGraphDiv2::findMin(int N, vector <int> s, vector <int> t, vector <int> weight, int charges) {
 
     n=N;
-    e=s.size();
 
-    C=vector<vector<bool> > (n,vector<bool> (n,false));
-    G=vector<vector<int> > (n,vector<int> (n,INT_MAX));
+    e=s.size();
 
     int i,p;
     vector<int> w=weight;
@@ -118,20 +115,24 @@ long long NegativeGraphDiv2::findMin(int N, vector <int> s, vector <int> t, vect
             }
         }
 
-        for(i=0;i<e;i++)
-        {
-            if(G[s[i]-1][t[i]-1]>w[i])
-            {
-                G[s[i]-1][t[i]-1]=w[i];
-                C[s[i]-1][t[i]-1]=true;
-            }
-        }
 
         do
         {
 
+            G=vector<vector<int> > (n,vector<int> (n,0));
             dist=vector<int> (n,INT_MAX);
             S=vector<bool> (n,false);
+
+            for(i=0;i<e;i++)
+            {
+                if(G[s[i]-1][t[i]-1]==0)
+                    G[s[i]-1][t[i]-1]=w[i];
+
+                else if(G[s[i]-1][t[i]-1]>w[i])
+                    G[s[i]-1][t[i]-1]=w[i];
+
+            }
+
 
             if(alt==0)
             {
@@ -152,13 +153,6 @@ long long NegativeGraphDiv2::findMin(int N, vector <int> s, vector <int> t, vect
                 if( dist[t[*it]-1] - dist[s[*it]-1] == w[*it] )
                 {
                     w[*it]=w[*it]*(-1);
-                    G[s[*it]-1][t[*it]-1]=INT_MAX;
-
-                    for(i=0;i<e;i++)
-                    {
-                        if(s[i]==s[*it]&&t[i]==t[*it])
-                            G[s[*it]-1][t[*it]-1]=min(G[s[*it]-1][t[*it]-1],w[i]);
-                    }
 
                     ED.erase(it);
                 }
@@ -166,7 +160,7 @@ long long NegativeGraphDiv2::findMin(int N, vector <int> s, vector <int> t, vect
             }
 
 
-            dist.clear();S.clear();
+            G.clear();dist.clear();S.clear();
 
             if(alt==0&&(res1+res<res))
                 res+=res1;
@@ -183,18 +177,16 @@ long long NegativeGraphDiv2::findMin(int N, vector <int> s, vector <int> t, vect
     return res+subvalue;
 }
 
-//<%:testing-code%>
-//Powered by [KawigiEdit] 2.0!
-//<%:start-tests%>
+
 double test0() {
 	int p0 = 3;
-	int t1[] = {1,1,2};
+	int t1[] = {1,1,2,2,3,3};
 	vector <int> p1(t1, t1+sizeof(t1)/sizeof(int));
-	int t2[] = {2,2,1};
+	int t2[] = {2,3,1,3,1,2};
 	vector <int> p2(t2, t2+sizeof(t2)/sizeof(int));
-	int t3[] = {6,5,4};
+	int t3[] = {1,5,1,10,1,1};
 	vector <int> p3(t3, t3+sizeof(t3)/sizeof(int));
-	int p4 = 2;
+	int p4 = 1;
 	NegativeGraphDiv2 * obj = new NegativeGraphDiv2();
 	clock_t start = clock();
 	long long my_answer = obj->findMin(p0, p1, p2, p3, p4);
@@ -302,30 +294,32 @@ double test3() {
 		return (double)(end-start)/CLOCKS_PER_SEC;
 	}
 }
-//<%:end-tests%>
+
 int main() {
 	int time;
 	bool errors = false;
-
-
-
+	
+	time = test0();
+	if (time < 0)
+		errors = true;
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-time = test0();
-if (time < 0)
-    errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
+
+
+//Powered by [KawigiEdit] 2.0!

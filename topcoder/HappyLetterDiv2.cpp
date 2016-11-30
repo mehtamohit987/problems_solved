@@ -84,6 +84,7 @@ char HappyLetterDiv2::getHappyLetter(string letters) {
     return max;
 }
 
+
 double test0() {
 	string p0 = "aacaaa";
 	HappyLetterDiv2 * obj = new HappyLetterDiv2();
@@ -172,32 +173,31 @@ double test3() {
 		return (double)(end-start)/CLOCKS_PER_SEC;
 	}
 }
-//<%:end-tests%>
+
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
 
-//<%:testing-code%>
 //Powered by [KawigiEdit] 2.0!

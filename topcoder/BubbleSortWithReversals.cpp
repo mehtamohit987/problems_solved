@@ -81,22 +81,19 @@ public:
  }
 int bubblesort()
 {
-int temp,x=0,p;
+int temp,x=0;
     for(int i=0;i<n;i++)
-    {
-    p=0;
-    for(int j=0;j<n-i-1;j++)
+    {for(int j=0;j<n-i-1;j++)
     {
         if(B[j]>B[j+1])
         {
             temp=B[j];
             B[j]=B[j+1];
             B[j+1]=temp;
-            x++;p++;
+            x++;
         }
 
     }
-    if(p==0) break;
     cout<<"\n"<<x<<"\n";
     printarr();
     cout<<"\n";
@@ -116,18 +113,14 @@ int BubbleSortWithReversals::getMinSwaps(vector <int> A, int K) {
     printarr();
 
 
-    //modify();
-
-	//int t0[] = {12,5,1,10,12,6,6,10,6,8};
-	int t0[]   = {12,5,1,10,6,6,12,10,6,8};
-	B=vector <int>(t0, t0+sizeof(t0)/sizeof(int));
+    modify();
     cout<<"\n\n";
     printarr();
     int swapa=bubblesort();
     return swapa;
 
 }
-//<%:start-tests%>
+
 double test0() {
 	int t0[] = {6,8,8,7,7};
 	vector <int> p0(t0, t0+sizeof(t0)/sizeof(int));
@@ -248,37 +241,35 @@ double test4() {
 		return (double)(end-start)/CLOCKS_PER_SEC;
 	}
 }
-//<%:end-tests%>
+
 int main() {
 	int time;
 	bool errors = false;
-/*
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-*/
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
-	/*time = test3();
+	
+	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-*/
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
 
-
-//<%:testing-code%>
 //Powered by [KawigiEdit] 2.0!

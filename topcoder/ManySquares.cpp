@@ -68,7 +68,7 @@ cout<<res;
 	return res;
 }
 
-//<%:start-tests%>
+
 double test0() {
 	int t0[] = {1,1,2,2,1,1,2};
 	vector <int> p0(t0, t0+sizeof(t0)/sizeof(int));
@@ -208,41 +208,39 @@ double test5() {
 		return (double)(end-start)/CLOCKS_PER_SEC;
 	}
 }
-//<%:end-tests%>
+
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test5();
 	if (time < 0)
 		errors = true;
-
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
 }
 
-
-//<%:testing-code%>
 //Powered by [KawigiEdit] 2.0!

@@ -30,10 +30,16 @@ string SpecialStrings::findNext(string current) {
 		string e="";
         string z="0";
         string o="1";
+cout<<"current :" <<current<<"\n";
+cout<<"z :" <<z<<"\n";
+cout<<"o :" <<o<<"\n";
+cout<<"e :" <<e<<"\n";
+cout<<z<<"\n";
 
 
+	if(current==z) return o;
+	if(current==o) return e;
 
-if(current[0]=='1') return e;
 
 	while(flag){
 
@@ -45,12 +51,12 @@ if(current[0]=='1') return e;
 	for(;i<current.size()-1;i++)
 	current[i]='0';
 
-
+	cout<<current;
 	flag=false;
 	for(i=1;i<current.length();i++)
 	{
 
-		if(current.substr(0,i)>=current.substr(i))
+		if(current.substr(0,i-1)>=current.substr(i,current.size()-1))
 		{
 			flag=true; break;
 		}
@@ -59,31 +65,15 @@ if(current[0]=='1') return e;
 	cout<<current;
 
 	}
+	cout<<"curr[0]"<<current[0];
 
 
 	return current==init?e:current;
-
 }
+
+
 double test0() {
-/*Problem: 1000
-Test Case: 6
-Succeeded: No
-Execution Time: 243 ms
-Peak memory used: 11.609MB
-Args:
-{"001111111111111111111111"}
-
-Expected:
-"010101010101010101010111"
-
-Received:
-"010010101010101010101011"
-
-Answer checking result:
-Returned value must exactly match the expected one
-*/
-
-	string p0 = "001111111111111111111111";
+	string p0 = "01";
 	SpecialStrings * obj = new SpecialStrings();
 	clock_t start = clock();
 	string my_answer = obj->findNext(p0);
@@ -196,33 +186,31 @@ double test4() {
 int main() {
 	int time;
 	bool errors = false;
-
+	
 	time = test0();
 	if (time < 0)
 		errors = true;
-/*
+	
 	time = test1();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test2();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test3();
 	if (time < 0)
 		errors = true;
-
+	
 	time = test4();
 	if (time < 0)
 		errors = true;
-*/
+	
 	if (!errors)
 		cout <<"You're a stud (at least on the example cases)!" <<endl;
 	else
 		cout <<"Some of the test cases had errors." <<endl;
-
-
-		cout<<"Expected:\t010101010101010101010111 \nReceived:\t010010101010101010101011";
 }
 
+//Powered by [KawigiEdit] 2.0!
