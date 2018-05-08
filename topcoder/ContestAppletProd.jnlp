@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<jnlp spec="1.0+" codebase="https://raw.githubusercontent.com/mehtamohit987/problems_solved/master/topcoder/" href="ContestAppletProd.jnlp">
+   <information> 
+      <title>Arena</title> 
+      <vendor>TopCoder, Inc.</vendor> 
+      <homepage href="http://www.topcoder.com"/> 
+      <description>TopCoder Contest Arena</description> 
+      <icon href="http://www.topcoder.com/images/favicon_new.gif"/>
+      <offline-allowed/>
+   </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <update check="always" policy="always"/>
+   <resources> 
+      <j2se version="1.6+" max-heap-size="128m"/> 
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/arena-client-7.1.3.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/basic_type_serialization-1.0.1.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/client-socket-1.1.1.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/concurrent-1.0.2.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/encoder-1.0.0.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/logging-1.1.0.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/arena-shared-7.5.6.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/client-common-1.2.0.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/compeng-common-1.2.4.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/custom-serialization-1.1.1.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/http-tunnel-client-1.1.0.jar" />
+      <jar href="/mehtamohit987/problems_solved/master/topcoder/topcoder-jars/log4j-1.2.17.jar" />
+   </resources> 
+   
+   
+   <application-desc main-class="com.topcoder.client.contestApplet.runner.generic"> 
+      <argument>www.topcoder.com</argument>
+      <argument>5001</argument>
+      <argument>http://tunnel1.topcoder.com/tunnel?dummy</argument>
+      <argument>TopCoder</argument>
+   </application-desc>
+</jnlp>
